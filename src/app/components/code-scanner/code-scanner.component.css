@@ -1,0 +1,13 @@
+.viewport::ng-deep video {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.scanner {
+  padding-top: .25rem;
+}
+
+.scanner-container {
+  text-align: center;
+}

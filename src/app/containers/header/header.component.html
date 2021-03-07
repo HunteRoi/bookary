@@ -10,7 +10,7 @@
 
     <app-user-card [auth]="auth" fxHide.lt-md></app-user-card>
 
-    <button mat-icon-button (click)="navigateTo('details')" *ngIf="auth.user | async">
+    <button mat-icon-button (click)="navigateTo('books')" *ngIf="auth.user | async">
       <mat-icon>search</mat-icon>
     </button>
     <button mat-icon-button *ngIf="(auth.user | async) && navigation !== '/admin'" (click)="navigateTo('admin')">

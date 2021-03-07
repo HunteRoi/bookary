@@ -1,0 +1,18 @@
+.panel-headers-align .mat-expansion-panel-header-title,
+.panel-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.panel-headers-align .mat-expansion-panel-header-description {
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.panel-headers-align .mat-form-field {
+  margin-left: .25rem;
+  margin-top: .25rem;
+}
+
+::ng-deep .mat-form-field-wrapper {
+  width: 87%;
+}

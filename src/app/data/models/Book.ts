@@ -3,19 +3,22 @@ interface Creator {
   name: string;
 }
 
-export interface Book {
-  id: string;
-  isbn10: string;
+export interface MinimalBook {
   ean: string;
   title: string;
   authors: string[];
-  creators?: Creator[];
   editor: string;
-  image?: string;
-  pages?: number;
-  year?: number;
-  resume?: string;
-  url?: string;
+  isbn10?: string | null;
+  creators?: Creator[];
+  image?: string | null;
+  pages?: number | null;
+  year?: number | null;
+  resume?: string | null;
+  url?: string | null;
+}
+
+export interface Book extends MinimalBook {
+  id: string;
   ownerIds: string[];
   currentlyBorrowed: boolean;
 }

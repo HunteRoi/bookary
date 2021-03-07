@@ -12,11 +12,13 @@
 <!-- User logged in -->
 <ng-template #authenticated>
   <div *ngIf="auth.user | async as user">
-    <img class="profile-image" [src]="user!.photoURL">
-    <span class="profile-text">{{ user!.displayName }}</span>
+    <a [routerLink]="['/users', user!.uid]" routerLinkActive="active" class="profile-link">
+      <img class="profile-image" [src]="user!.photoURL">
+      <span class="profile-text">{{ user!.displayName }}</span>
 
-    <button mat-icon-button (click)="auth.signOut()">
-      <mat-icon>logout</mat-icon>
-    </button>
+      <button mat-icon-button (click)="auth.signOut()">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </a>
   </div>
 </ng-template>

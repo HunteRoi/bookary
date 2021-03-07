@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./user-card.component.css'],
 })
 export class UserCardComponent implements OnInit {
-  @Input() auth!: AuthService;
+  @Input() auth: AuthService;
 
   constructor() {}
 

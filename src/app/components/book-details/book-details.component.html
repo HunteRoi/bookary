@@ -1,0 +1,31 @@
+<div *ngIf="bookDetails | async as book" class="book-container">
+  <a [href]="book?.url" target="_blank">
+    <img [src]="book?.image" [alt]="book?.ean" width="250px" />
+
+    <h2>{{ book?.title | titlecase }}</h2>
+  </a>
+  <p>EAN: {{ book?.ean }}</p>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Role</th>
+    </tr>
+
+    <tr *ngFor="let author of book?.authors">
+      <td>{{ author | titlecase }}</td>
+      <td>Author</td>
+    </tr>
+
+    <tr *ngFor="let creator of book?.creators">
+      <td>{{ creator.name | titlecase }}</td>
+      <td>{{ creator.role | titlecase }}</td>
+    </tr>
+  </table>
+
+  <p>Editor: {{ book?.editor }}</p>
+  <p>Publishing Year: {{ book?.year }}</p>
+  <p>Number of pages: {{ book?.pages }}</p>
+
+  <p class="book-resume">{{ book?.resume }}</p>
+</div>

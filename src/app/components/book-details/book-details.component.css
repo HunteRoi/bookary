@@ -1,0 +1,29 @@
+.book-container {
+  padding-top: 1rem;
+  text-align: center;
+}
+
+.book-container table {
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
+
+.book-container a {
+  text-decoration: none;
+  color: inherit;
+}
+
+table {
+  width: 60%;
+}
+
+table,
+td,
+th {
+  border: 1px black solid;
+  border-collapse: collapse;
+}
+
+.book-resume {
+  text-align: justify;
+}

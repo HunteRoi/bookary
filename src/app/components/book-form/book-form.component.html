@@ -1,0 +1,118 @@
+<form [formGroup]="bookForm" (ngSubmit)="submitBook()">
+  <h2>Add a book</h2>
+
+  <div>
+    <mat-form-field appearance="outline" floatLabel="auto">
+      <mat-label>Select a person</mat-label>
+      <mat-select placeholder="Select a person" formControlName="ownerId" (input)="onSelected($event)" required>
+        <mat-option *ngFor="let user of users | async" [value]="user.uid">{{ user.displayName }}</mat-option>
+      </mat-select>
+
+      <mat-error *ngIf="ownerId?.invalid && bookForm.dirty">Select a person!</mat-error>
+    </mat-form-field>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div>
+    <div class="scanner-container">
+      <app-code-scanner (code)="getCode($event)"></app-code-scanner>
+      <mat-error *ngIf="errorMessage">{{ errorMessage }}</mat-error>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="form-container">
+      <p>
+        <mat-form-field appearance="outline" floatLabel="auto">
+          <mat-label>EAN</mat-label>
+          <input matInput type="text" placeholder="Type the EAN code" formControlName="ean" required />
+          <mat-error *ngIf="ean?.invalid && bookForm.dirty">EAN code required</mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="outline" floatLabel="auto">
+          <mat-label>Title</mat-label>
+          <input matInput type="text" placeholder="Type the title" formControlName="title" required />
+          <mat-error *ngIf="title?.invalid && bookForm.dirty">Title required</mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="outline" floatLabel="auto">
+          <mat-label>ISBN-10</mat-label>
+          <input matInput type="text" placeholder="Type the ISBN-10 code" formControlName="isbn10" maxlength="10"/>
+        </mat-form-field>
+      </p>
+
+      <div class="authors-container">
+        <button mat-raised-button (click)="addAuthor()">Add Author</button>
+        <div formArrayName="authors" *ngFor="let author of authors.controls; let i = index;">
+          <mat-form-field appearance="outline" floatLabel="auto">
+            <mat-label>Author name</mat-label>
+            <input matInput type="text" placeholder="Type the author name" [formControlName]="i"/>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="creators-container">
+        <button mat-raised-button (click)="addCreator()">Add Creator</button>
+        <div formArrayName="creators" *ngFor="let creator of creators.controls; let i = index;">
+          <mat-form-field appearance="outline" floatLabel="auto" [formGroupName]="i">
+            <mat-label>Creator Name</mat-label>
+            <input matInput type="text" placeholder="Type the creator name" formControlName="name" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" floatLabel="auto" [formGroupName]="i">
+            <mat-label>Creator Role</mat-label>
+            <input matInput type="text" placeholder="Type the creator role" formControlName="role" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <p>
+        <mat-form-field appearance="outline" floatLabel="auto">
+          <mat-label>Editor</mat-label>
+          <input matInput type="text" placeholder="Type the editor name" formControlName="editor" required />
+          <mat-error *ngIf="editor?.invalid && bookForm.dirty">Editor required</mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="outline" floatLabel="auto">
+          <mat-label>Image URL</mat-label>
+          <input matInput type="url" placeholder="Type the image URL" formControlName="image" />
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="outline" floatLabel="auto">
+          <mat-label>Pages</mat-label>
+          <input matInput type="number" placeholder="Type the number of pages" formControlName="pages" />
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="outline" floatLabel="auto">
+          <mat-label>Publishing Year</mat-label>
+          <input matInput type="number" placeholder="Type the year of publish" formControlName="year" />
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="outline" floatLabel="auto">
+          <mat-label>Webpage URL</mat-label>
+          <input matInput type="url" placeholder="Type the web page URL" formControlName="url" />
+        </mat-form-field>
+      </p>
+    </div>
+  </div>
+
+  <mat-error [hidden]="!addErrorMessage">{{ addErrorMessage }}</mat-error>
+
+  <div>
+    <button mat-raised-button color="" (click)="resetForm()">Reset</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="bookForm.invalid">Submit</button>
+  </div>
+</form>

@@ -9,3 +9,8 @@
   padding: 0 1rem 0 .5rem;
   font-size: small;
 }
+
+.profile-link {
+  color: inherit;
+  text-decoration: none;
+}

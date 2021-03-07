@@ -56,7 +56,7 @@ export interface ApiBook {
 }
 
 export interface ApiResult {
-  string: ApiBook[];
+  [key: string]: ApiBook[];
 }
 
 export interface ApiResponse {

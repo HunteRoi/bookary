@@ -38,7 +38,7 @@ export class AuthService {
   }
 
   private updateUserData(user: firebase.User | null) {
-    if (user == null) return;
+    if (user == null) return null;
 
     // Sets user data to firestore on login
     const userRef = this.userService.getUserById(user.uid);
