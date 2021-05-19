@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+	<mat-toolbar-row>
+		<button mat-icon-button (click)="goToHome()">
+			<mat-icon>menu_book</mat-icon>
+		</button>
+		<span>Bookary</span>
+		<span class="spacer"></span>
+		<span fxHide.lt-md>{{ title }}</span>
+		<span fxHide.lt-md class="spacer"></span>
+
+		<button *ngIf="navigation !== '/'" mat-button (click)="goBack()">{{ 'header.goBack' | transloco }}</button>
+
+		<button mat-icon-button (click)="goToBooks()">
+			<mat-icon>books</mat-icon>
+		</button>
+	</mat-toolbar-row>
+
+  <mat-toolbar-row fxHide.gt-sm>
+    <span class="spacer"></span>
+    <span>{{ title }}</span>
+    <span class="spacer"></span>
+  </mat-toolbar-row>
+</mat-toolbar>

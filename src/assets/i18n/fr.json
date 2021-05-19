@@ -1,0 +1,15 @@
+{
+	"header": {
+		"defaultTitle": "Ma Librairie En Ligne",
+		"goBack": "Retour",
+		"error": "Erreur"
+	},
+	"book": {
+		"defaultTitle": "Scanner un Livre",
+		"bookTitle": "Détails",
+		"administration": "Ajouter un Livre"
+	},
+	"user": {
+		"defaultTitle": "Profil Utilisateur"
+	}
+}
