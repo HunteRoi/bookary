@@ -9,9 +9,7 @@ import { map } from 'rxjs/operators';
 
 import { User } from '../models/User';
 
-@Injectable({
-	providedIn: 'root',
-})
+@Injectable()
 export class UserService {
 	private basePath: string = 'users';
 

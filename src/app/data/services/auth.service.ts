@@ -9,9 +9,7 @@ import firebase from 'firebase/app';
 import { User } from '../models/User';
 import { UserService } from './user.service';
 
-@Injectable({
-	providedIn: 'root',
-})
+@Injectable()
 export class AuthService {
 	user: Observable<User | undefined | null>;
 

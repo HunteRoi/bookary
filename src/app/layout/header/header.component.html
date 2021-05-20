@@ -8,12 +8,19 @@
 		<span fxHide.lt-md>{{ title }}</span>
 		<span fxHide.lt-md class="spacer"></span>
 
+		<app-user-card [auth]="auth" fxHide.lt-md></app-user-card>
+
 		<button *ngIf="navigation !== '/'" mat-button (click)="goBack()">{{ 'header.goBack' | transloco }}</button>
 
 		<button mat-icon-button (click)="goToBooks()">
 			<mat-icon>books</mat-icon>
 		</button>
 	</mat-toolbar-row>
+
+  <mat-toolbar-row fxHide.gt-sm>
+    <span class="spacer"></span>
+    <app-user-card [auth]="auth"></app-user-card>
+  </mat-toolbar-row>
 
   <mat-toolbar-row fxHide.gt-sm>
     <span class="spacer"></span>

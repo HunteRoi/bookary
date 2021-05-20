@@ -1,7 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -18,6 +17,8 @@ import { CustomSerializer } from './store/reducers/router.reducers';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { UserCardComponent } from './components/user-card/user-card.component';
+import { SharedModule } from '@shared/shared.module';
+import { DataModule } from '@data/data.module';
 
 @NgModule({
 	imports: [
@@ -29,7 +30,6 @@ import { UserCardComponent } from './components/user-card/user-card.component';
 			registrationStrategy: 'registerWhenStable:30000',
 		}),
 		HttpClientModule,
-		FontAwesomeModule,
 		StoreModule.forRoot(reducers, { metaReducers }),
 		StoreRouterConnectingModule.forRoot(),
 		!environment.production
@@ -38,6 +38,9 @@ import { UserCardComponent } from './components/user-card/user-card.component';
 		EffectsModule.forRoot([RouterEffects]),
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFirestoreModule,
+
+		SharedModule,
+		DataModule
 	],
 	providers: [
 		{
@@ -45,8 +48,7 @@ import { UserCardComponent } from './components/user-card/user-card.component';
 			useClass: CustomSerializer,
 		},
 	],
-	declarations: [
-   UserCardComponent
-	],
+	declarations: [UserCardComponent],
+	exports: [UserCardComponent]
 })
 export class CoreModule {}

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StoreModule } from '@ngrx/store';
 
 import { TranslocoRootModule } from './transloco/transloco-root.module';
@@ -16,6 +17,7 @@ export const modules = [
 	ReactiveFormsModule,
 	HttpClientModule,
 	TranslocoRootModule,
+	FontAwesomeModule,
 	MaterialModule,
 	FlexLayoutModule,
 	StoreModule,
