@@ -7,11 +7,9 @@ import {
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { User } from '../models/User';
+import { User } from '../models';
 
-@Injectable({
-	providedIn: 'root',
-})
+@Injectable()
 export class UserService {
 	private basePath: string = 'users';
 
@@ -25,9 +23,7 @@ export class UserService {
 		this.users = this.collection
 			.snapshotChanges()
 			.pipe(
-				map((changes) =>
-					changes.map((change) => change.payload.doc.data() as User),
-				),
+				map((changes) => changes.map((change) => change.payload.doc.data() as User)),
 			);
 	}
 

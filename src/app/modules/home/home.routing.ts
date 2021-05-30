@@ -5,6 +5,7 @@ import { HomepageComponent } from './containers/homepage/homepage.component';
 const routes: Routes = [
 	{
 		path: '',
+		pathMatch: 'full',
 		component: HomepageComponent
 	}
 ];

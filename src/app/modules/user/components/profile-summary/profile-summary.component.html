@@ -1,0 +1,5 @@
+<div *ngIf="profile$ | async as profile">
+  <img [src]="profile.photoURL" alt="Profile avatar" />
+  <h1>{{ profile.displayName }}</h1>
+  <h2>{{ profile.email }}</h2>
+</div>

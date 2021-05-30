@@ -1,0 +1,9 @@
+<div id="errorWrapper" *transloco="let t; read: 'error'">
+  <div class="error">
+    <div>
+      <h1>Oops!</h1>
+      <h2>{{ code }} - {{ t(code) }}</h2>
+    </div>
+    <a routerLink="['/']">{{ t('buttonText') }}</a>
+  </div>
+</div>

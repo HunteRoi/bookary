@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { TRANSLOCO_SCOPE } from '@ngneat/transloco';
 
-import { SharedModule } from '@shared/shared.module';
-import { HomeRoutingModule } from './home.routing';
 import { HomepageComponent } from './containers/homepage/homepage.component';
+import { HomeRoutingModule } from './home.routing';
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
-	declarations: [
-    HomepageComponent
-  ],
-	imports: [CommonModule, SharedModule, HomeRoutingModule],
+  declarations: [HomepageComponent],
+  providers: [{ provide: TRANSLOCO_SCOPE, useValue: 'home' }],
+  imports: [SharedModule, HomeRoutingModule]
 })
-export class HomeModule {}
+export class HomeModule { }

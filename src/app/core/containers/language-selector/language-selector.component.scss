@@ -1,0 +1,11 @@
+.text-sm {
+  font-size: 0.75rem;
+}
+
+::ng-deep .mat-select-arrow {
+  border-image-source: url("/assets/img/translate.svg");
+  border-image-repeat: stretch;
+  border-left: 1.5rem solid transparent !important;
+  border-right: none !important;
+  border-top: 1.5rem solid transparent !important;
+}

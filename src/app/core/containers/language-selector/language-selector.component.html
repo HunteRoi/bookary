@@ -1,0 +1,5 @@
+<mat-select [(value)]="activeLang" class="text-sm">
+  <mat-option *ngFor="let lang of langs" [value]="lang.id" required (click)="onSelection(lang.id)">
+    {{ lang.label }}
+  </mat-option>
+</mat-select>

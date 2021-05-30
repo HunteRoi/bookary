@@ -1,0 +1,8 @@
+{
+	"400": "Bad request!",
+	"401": "You're not authenticated!",
+	"403": "You cannot do such action!",
+	"404": "Resource not found!",
+	"500": "The server is in trouble!",
+	"buttonText": "Back to homepage"
+}

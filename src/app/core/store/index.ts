@@ -1,3 +1,5 @@
-export * as actions from './actions';
-export * as effects from './effects';
-export * as reducers from './reducers';
+export * from './actions';
+export * from './effects';
+export * from './reducers';
+export * from './selectors';
+export * from './state';
