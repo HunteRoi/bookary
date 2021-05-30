@@ -1,0 +1,8 @@
+<app-loading *ngIf="isLoading$ | async"></app-loading>
+<div *ngIf="!(error$ | async)">
+  <app-profile-summary [profile$]="profile$"></app-profile-summary>
+  
+  <hr />
+
+  <app-profile-details></app-profile-details>
+</div>

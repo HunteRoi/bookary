@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
-import { AuthService } from '@data/services/auth.service';
-import { State } from '@core/store/reducers';
+import { AppState } from '@core/store/state';
 import { Title } from '@angular/platform-browser';
-import { Back, Go } from '@core/store/actions';
+import { Go, Back } from '@core/store/actions/router.actions';
+import { UserSelectors } from '@core/store';
+import { Login, Logout } from '@core/store/actions/user.actions';
+import { UserState } from '@core/store/reducers/user.reducer';
 
 @Component({
 	selector: 'app-header',
@@ -14,13 +17,16 @@ import { Back, Go } from '@core/store/actions';
 	styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+	userState$: Observable<UserState>;
+
 	constructor(
-		public auth: AuthService,
-		private store: Store<State>,
+		private store: Store<AppState>,
 		private router: Router,
 		private route: ActivatedRoute,
 		private titleService: Title,
-	) {}
+	) {	
+		this.userState$ = this.store.select(UserSelectors.selectUserState);
+	}
 
 	ngOnInit(): void {
 		this.router.events
@@ -40,15 +46,15 @@ export class HeaderComponent implements OnInit {
 	}
 
 	goToBooks(): void {
-		this.store.dispatch(new Go({ path: ['/books'] }));
+		this.store.dispatch(Go({ path: ['/books'] }));
 	}
 
 	goToHome(): void {
-		this.store.dispatch(new Go({ path: ['/'] }));
+		this.store.dispatch(Go({ path: ['/'] }));
 	}
 
 	goBack(): void {
-		this.store.dispatch(new Back());
+		this.store.dispatch(Back());
 	}
 
 	get title(): string {
@@ -57,5 +63,13 @@ export class HeaderComponent implements OnInit {
 
 	get navigation(): string {
 		return this.router.url;
+	}
+
+	login() {
+		this.store.dispatch(Login());
+	}
+
+	logout() {
+		this.store.dispatch(Logout());
 	}
 }

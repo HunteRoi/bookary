@@ -1,24 +1,21 @@
-<div *ngIf="auth.user | async; then authenticated else guest">
-  <!-- template will replace this div -->
-</div>
+<div *ngIf="userState$ | async as userState">
+  <ng-container *ngIf="userState.currentUser; then authenticated else guest"></ng-container>
 
-<!-- User NOT logged in -->
-<ng-template #guest>
-  <button mat-icon-button (click)="auth.signIn()">
-    <mat-icon>login</mat-icon>
-  </button>
-</ng-template>
-
-<!-- User logged in -->
-<ng-template #authenticated>
-  <div *ngIf="auth.user | async as user">
-    <a [routerLink]="['/users', user!.uid]" routerLinkActive="active" class="profile-link">
-      <img class="profile-image" [src]="user!.photoURL">
-      <span class="profile-text">{{ user!.displayName }}</span>
-
-      <button mat-icon-button (click)="auth.signOut()">
-        <mat-icon>logout</mat-icon>
-      </button>
+  <!-- User NOT logged in -->
+  <ng-template #guest>
+    <button mat-icon-button [loading]="userState.isLoading" spinnerColor="accent" (click)="onLoginClick()">
+      <mat-icon>login</mat-icon>
+    </button>
+  </ng-template>
+  
+  <!-- User logged in -->
+  <ng-template #authenticated>
+    <a *ngIf="userState.currentUser as user" [routerLink]="['/users', user.uid]" routerLinkActive="active" class="profile-link">
+      <img class="profile-image" [src]="user.photoURL">
+      <span *ngIf="!small" class="profile-text">{{ user.displayName }}</span>
     </a>
-  </div>
-</ng-template>
+    <button mat-icon-button (click)="onLogoutClick()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </ng-template>
+</div>

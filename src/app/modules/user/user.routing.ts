@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UserProfileComponent } from './containers/user-profile/user-profile.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+	{
+		path: ':uid',
+		component: UserProfileComponent
+	}
+];
 
 @NgModule({
 	imports: [RouterModule.forChild(routes)],

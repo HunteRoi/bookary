@@ -24,7 +24,7 @@
       "@shared/*": ["src/app/shared/*"],
       "@modules/*": ["src/app/modules/*"],
       "@env": ["src/environments/environment"],
-			"@data/*": ["src/app/data/*"],
+      "@package": ["./package.json"],
       "jszip": [
         "node_modules/jszip/dist/jszip.min.js"
       ]

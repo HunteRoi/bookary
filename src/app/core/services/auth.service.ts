@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import firebase from 'firebase/app';
 
-import { User } from '../models/User';
+import { User } from '../models';
 import { UserService } from './user.service';
 
 @Injectable()
@@ -15,8 +14,7 @@ export class AuthService {
 
 	constructor(
 		private afAuth: AngularFireAuth,
-		private userService: UserService,
-		private router: Router,
+		private userService: UserService
 	) {
 		this.user = this.afAuth.authState.pipe(
 			switchMap((usr) => {
@@ -53,6 +51,5 @@ export class AuthService {
 
 	async signOut() {
 		await this.afAuth.signOut();
-		this.router.navigate(['/']);
 	}
 }

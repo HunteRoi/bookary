@@ -10,8 +10,9 @@ import { TranslocoRootModule } from './transloco/transloco-root.module';
 import { MaterialModule } from './material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './components/loading/loading.component';
+import { MatButtonLoadingDirective } from './directives/mat-button-loading-directive';
 
-export const modules = [
+const modules = [
 	CommonModule,
 	FormsModule,
 	ReactiveFormsModule,
@@ -24,11 +25,14 @@ export const modules = [
 	RouterModule,
 ];
 
+const declarations = [
+	LoadingComponent,
+	MatButtonLoadingDirective
+];
+
 @NgModule({
-	declarations: [
-    LoadingComponent
-  ],
+	declarations: declarations,
 	imports: modules,
-	exports: modules,
+	exports: [...modules, ...declarations],
 })
 export class SharedModule {}

@@ -3,13 +3,5 @@
 		"defaultTitle": "My Online Library",
 		"goBack": "Go Back",
 		"error": "Error"
-	},
-  "book": {
-		"defaultTitle": "Scan For Book Details",
-		"bookTitle": "Book Details",
-		"administration": "Add Book Details"
-	},
-	"user": {
-		"defaultTitle": "User Profile"
 	}
 }

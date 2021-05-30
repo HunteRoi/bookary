@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
-import { AuthService } from '@data/services/auth.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { UserState } from '@core/store/reducers/user.reducer';
 
 @Component({
   selector: 'app-user-card',
@@ -7,5 +9,21 @@ import { AuthService } from '@data/services/auth.service';
   styleUrls: ['./user-card.component.scss']
 })
 export class UserCardComponent {
-  @Input() auth: AuthService;
+  @Input() userState$: Observable<UserState>;
+  @Input() small?: boolean = false;
+  @Output() login: EventEmitter<void>;
+  @Output() logout: EventEmitter<void>;
+
+  constructor() {
+    this.login = new EventEmitter();
+    this.logout = new EventEmitter();
+  }
+
+  onLoginClick() {
+    this.login.emit();
+  }
+
+  onLogoutClick() {
+    this.logout.emit();
+  }
 }

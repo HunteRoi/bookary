@@ -14,9 +14,9 @@ import { Observable } from 'rxjs';
 import { environment } from '@env';
 import { LoadingComponent } from '../components/loading/loading.component';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class TranslocoHttpLoader implements TranslocoLoader {
-	constructor(private http: HttpClient) {}
+	constructor(private http: HttpClient) { }
 
 	getTranslation(lang: string): Observable<Translation> {
 		return this.http.get<Translation>(`/assets/i18n/${lang}.json`);
@@ -29,7 +29,7 @@ export class TranslocoHttpLoader implements TranslocoLoader {
 		{
 			provide: TRANSLOCO_CONFIG,
 			useValue: translocoConfig({
-				availableLangs: ['en', 'fr'],
+				availableLangs: [{ id: 'en', label: 'English' }, { id: 'fr', label: 'Français' }],
 				defaultLang: 'fr',
 				// Remove this option if your application doesn't support changing language in runtime.
 				reRenderOnLangChange: true,
@@ -43,4 +43,4 @@ export class TranslocoHttpLoader implements TranslocoLoader {
 		},
 	],
 })
-export class TranslocoRootModule {}
+export class TranslocoRootModule { }
