@@ -18,6 +18,7 @@ import { UserCardComponent } from './components/user-card/user-card.component';
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
 import { LanguageSelectorComponent } from './containers/language-selector/language-selector.component';
+import { PageTitleService } from './services/page-title.service';
 
 @NgModule({
 	imports: [
@@ -44,7 +45,8 @@ import { LanguageSelectorComponent } from './containers/language-selector/langua
 			useClass: CustomSerializer,
 		},
 		AuthService,
-		UserService
+		UserService,
+		PageTitleService
 	],
 	declarations: [UserCardComponent, LanguageSelectorComponent],
 	exports: [UserCardComponent, LanguageSelectorComponent]

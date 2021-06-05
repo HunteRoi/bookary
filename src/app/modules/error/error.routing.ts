@@ -3,9 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { ErrorComponent } from './containers/error/error.component';
 
 const routes: Routes = [
-	{ 
+	{
 		path: ':code',
-		component: ErrorComponent
+		component: ErrorComponent,
+		data: { scope: 'error', title: 'title' }
 	}
 ];
 

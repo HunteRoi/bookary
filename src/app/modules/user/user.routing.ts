@@ -5,7 +5,8 @@ import { UserProfileComponent } from './containers/user-profile/user-profile.com
 const routes: Routes = [
 	{
 		path: ':uid',
-		component: UserProfileComponent
+		component: UserProfileComponent,
+		data: { scope: 'user', title: 'title' }
 	}
 ];
 

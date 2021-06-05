@@ -6,7 +6,7 @@ import { TRANSLOCO_SCOPE } from '@ngneat/transloco';
 
 @NgModule({
 	declarations: [],
-	providers: [{ provide: TRANSLOCO_SCOPE, useValue: 'book' }],
-	imports: [CommonModule, BookRoutingModule]
+	imports: [CommonModule, BookRoutingModule],
+	providers: [{ provide: TRANSLOCO_SCOPE, useValue: 'book' }]
 })
 export class BookModule {}

@@ -1,4 +1,5 @@
 {
+	"title": "Erreur",
 	"400": "Requête invalide!",
 	"401": "Tu n'es pas authentifié!",
 	"403": "Tu n'as pas le droit de faire cette action!",

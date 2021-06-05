@@ -1,48 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { filter, map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { AppState } from '@core/store/state';
-import { Title } from '@angular/platform-browser';
 import { Go, Back } from '@core/store/actions/router.actions';
 import { UserSelectors } from '@core/store';
 import { Login, Logout } from '@core/store/actions/user.actions';
 import { UserState } from '@core/store/reducers/user.reducer';
+import { PageTitleService } from '@core/services/page-title.service';
 
 @Component({
 	selector: 'app-header',
 	templateUrl: './header.component.html',
 	styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 	userState$: Observable<UserState>;
 
 	constructor(
 		private store: Store<AppState>,
 		private router: Router,
-		private route: ActivatedRoute,
-		private titleService: Title,
+		private pageTitleService: PageTitleService,
 	) {	
 		this.userState$ = this.store.select(UserSelectors.selectUserState);
-	}
-
-	ngOnInit(): void {
-		this.router.events
-			.pipe(
-				filter((event) => event instanceof NavigationEnd),
-				map(() => {
-					const routeTitle = this.route.firstChild?.snapshot.data.title;
-					console.debug('activated route', routeTitle);
-
-					const titleServiceTitle = this.titleService.getTitle();
-					console.debug('title service', titleServiceTitle);
-
-					return routeTitle ?? titleServiceTitle;
-				}),
-			)
-			.subscribe((title: string) => this.titleService.setTitle(title));
 	}
 
 	goToBooks(): void {
@@ -50,7 +31,7 @@ export class HeaderComponent implements OnInit {
 	}
 
 	goToHome(): void {
-		this.store.dispatch(Go({ path: ['/'] }));
+		this.store.dispatch(Go({ path: ['/home'] }));
 	}
 
 	goBack(): void {
@@ -58,7 +39,7 @@ export class HeaderComponent implements OnInit {
 	}
 
 	get title(): string {
-		return this.titleService.getTitle();
+		return this.pageTitleService.getTitle();
 	}
 
 	get navigation(): string {

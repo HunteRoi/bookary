@@ -12,7 +12,7 @@
   <ng-template #authenticated>
     <a *ngIf="userState.currentUser as user" [routerLink]="['/users', user.uid]" routerLinkActive="active" class="profile-link">
       <img class="profile-image" [src]="user.photoURL">
-      <span *ngIf="!small" class="profile-text">{{ user.displayName }}</span>
+      <span fxHide.lt-md class="profile-text">{{ user.displayName }}</span>
     </a>
     <button mat-icon-button (click)="onLogoutClick()">
       <mat-icon>logout</mat-icon>

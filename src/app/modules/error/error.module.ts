@@ -7,7 +7,7 @@ import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
 	declarations: [ErrorComponent],
-  providers: [{ provide: TRANSLOCO_SCOPE, useValue: 'error' }],
-	imports: [SharedModule, ErrorRoutingModule]
+	imports: [SharedModule, ErrorRoutingModule],
+  providers: [{ provide: TRANSLOCO_SCOPE, useValue: 'error' }]
 })
 export class ErrorModule {}

@@ -19,13 +19,13 @@ import { SharedModule } from '@shared/shared.module';
     ProfileDetailsComponent,
     ProfileSummaryComponent
   ],
-	providers: [{ provide: TRANSLOCO_SCOPE, useValue: 'user' }],
 	imports: [
 		CommonModule, 
 		UserRoutingModule,
 		SharedModule,
 		StoreModule.forFeature(Features.Profile, reducer),
 		EffectsModule.forFeature(effects)
-	]
+	],
+	providers: [{ provide: TRANSLOCO_SCOPE, useValue: 'user' }]
 })
 export class UserModule {}

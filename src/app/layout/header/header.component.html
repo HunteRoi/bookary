@@ -3,30 +3,24 @@
 		<button mat-icon-button (click)="goToHome()">
 			<mat-icon>menu_book</mat-icon>
 		</button>
-		<span>Bookary</span>
+		<span role="button" (click)="goToHome()">{{ title }}</span>
 		<span class="spacer"></span>
-		<span fxHide.lt-md>{{ title }}</span>
-		<span fxHide.lt-md class="spacer"></span>
 
-		<app-user-card [userState$]="userState$" (login)="login()" (logout)="logout()" fxHide.lt-md></app-user-card>
-		<app-language-selector fxHide.lt-md></app-language-selector>
-		
-		<button *ngIf="navigation !== '/'" mat-button (click)="goBack()">{{ 'header.goBack' | transloco }}</button>
+		<app-user-card [userState$]="userState$" (login)="login()" (logout)="logout()"></app-user-card>
+		<app-language-selector></app-language-selector>
 
-		<button mat-icon-button (click)="goToBooks()">
+		<button mat-icon-button fxHide.lt-md (click)="goToBooks()">
 			<mat-icon>books</mat-icon>
 		</button>
+
+		<button *ngIf="navigation !== '/home'" fxHide.lt-md mat-button (click)="goBack()">{{ 'header.goBack' | transloco }}</button>
 	</mat-toolbar-row>
 
   <mat-toolbar-row fxHide.gt-sm>
     <span class="spacer"></span>
-    <app-user-card [userState$]="userState$" (login)="login()" (logout)="logout()" [small]="true"></app-user-card>
-		<app-language-selector></app-language-selector>
-  </mat-toolbar-row>
-
-  <mat-toolbar-row fxHide.gt-sm>
-    <span class="spacer"></span>
-    <span>{{ title }}</span>
-    <span class="spacer"></span>
+		<button mat-icon-button (click)="goToBooks()">
+			<mat-icon>books</mat-icon>
+		</button>
+		<button *ngIf="navigation !== '/home'" mat-button (click)="goBack()">{{ 'header.goBack' | transloco }}</button>
   </mat-toolbar-row>
 </mat-toolbar>

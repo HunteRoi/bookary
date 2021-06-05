@@ -10,7 +10,6 @@ import { UserState } from '@core/store/reducers/user.reducer';
 })
 export class UserCardComponent {
   @Input() userState$: Observable<UserState>;
-  @Input() small?: boolean = false;
   @Output() login: EventEmitter<void>;
   @Output() logout: EventEmitter<void>;
 

@@ -7,7 +7,7 @@ import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [HomepageComponent],
-  providers: [{ provide: TRANSLOCO_SCOPE, useValue: 'home' }],
-  imports: [SharedModule, HomeRoutingModule]
+  imports: [SharedModule, HomeRoutingModule],
+	providers: [{provide: TRANSLOCO_SCOPE, useValue: 'home'}],
 })
 export class HomeModule { }
