@@ -1,0 +1,33 @@
+.profile-image {
+  vertical-align: middle;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+
+.profile-text {
+  padding: 0 1rem 0 .5rem;
+  font-size: small;
+}
+
+.profile-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.avatar {
+  outline: none;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  line-height: 48px;
+  height: 48px;
+  padding: 0 16px;
+  text-align: left;
+  text-decoration: none;
+  max-width: 100%;
+  position: relative;
+}

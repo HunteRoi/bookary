@@ -1,7 +1,16 @@
 {
-	"title": "Ma Librairie En Ligne",
 	"header": {
 		"goBack": "Retour",
-		"error": "Erreur"
+		"error": "Erreur",
+		"home": "Accueil",
+		"books": "Livres"
+	},
+	"userCard": {
+		"login": "Se connecter",
+		"logout": "Se déconnecter",
+		"profile": "Votre profil"
+	},
+	"languageSelector": {
+		"language": "Langue"
 	}
 }

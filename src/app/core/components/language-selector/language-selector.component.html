@@ -1,0 +1,10 @@
+<button mat-menu-item [matMenuTriggerFor]="languageMenu" aria-label="language menu">
+  <mat-icon>translate</mat-icon>
+  {{ 'languageSelector.language' | transloco }}: {{ activeLang.label }}
+</button>
+
+<mat-menu #languageMenu="matMenu">
+  <button mat-menu-item *ngFor="let lang of langs" (click)="onLangSelection(lang.id)">
+    {{ lang.label }}
+  </button>
+</mat-menu>

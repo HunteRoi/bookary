@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material/icon';
 import { Store } from '@ngrx/store';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { AppState } from '@core/store/state';
-import { Go, Back } from '@core/store/actions/router.actions';
 import { UserSelectors } from '@core/store';
 import { Login, Logout } from '@core/store/actions/user.actions';
 import { UserState } from '@core/store/reducers/user.reducer';
 import { PageTitleService } from '@core/services/page-title.service';
+import { LanguagesService } from '@core/services/languages.service';
 
 @Component({
 	selector: 'app-header',
@@ -17,33 +18,27 @@ import { PageTitleService } from '@core/services/page-title.service';
 })
 export class HeaderComponent {
 	userState$: Observable<UserState>;
+	@Output() onMenuClick: EventEmitter<void>;
 
 	constructor(
 		private store: Store<AppState>,
-		private router: Router,
 		private pageTitleService: PageTitleService,
-	) {	
+		private languagesService: LanguagesService,
+		iconRegistry: MatIconRegistry,
+		sanitizer: DomSanitizer
+	) {
 		this.userState$ = this.store.select(UserSelectors.selectUserState);
+		this.onMenuClick = new EventEmitter();
+
+		iconRegistry.addSvgIcon('open-book', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/open-book.svg'));
 	}
 
-	goToBooks(): void {
-		this.store.dispatch(Go({ path: ['/books'] }));
-	}
-
-	goToHome(): void {
-		this.store.dispatch(Go({ path: ['/home'] }));
-	}
-
-	goBack(): void {
-		this.store.dispatch(Back());
+	clickMenu() {
+		this.onMenuClick.emit();
 	}
 
 	get title(): string {
 		return this.pageTitleService.getTitle();
-	}
-
-	get navigation(): string {
-		return this.router.url;
 	}
 
 	login() {
@@ -52,5 +47,9 @@ export class HeaderComponent {
 
 	logout() {
 		this.store.dispatch(Logout());
+	}
+
+	changeLanguage(lang: string) {
+		this.languagesService.changeLanguage(lang);
 	}
 }

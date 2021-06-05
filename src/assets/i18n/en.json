@@ -1,7 +1,16 @@
 {
-	"title": "My Online Library",
 	"header": {
 		"goBack": "Go Back",
-		"error": "Error"
+		"error": "Error",
+		"home": "Home",
+		"books": "Books"
+	},
+	"userCard": {
+		"login": "Sign in",
+		"logout": "Sign out",
+		"profile": "Your profile"
+	},
+	"languageSelector": {
+		"language": "Language"
 	}
 }

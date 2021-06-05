@@ -3,10 +3,9 @@
 	font-size: x-large;
 	line-height: 2rem;
 
-	p {
-		&:first-of-type {
-			text-align: center;
-		}
+	h1 {
+		text-align: center;
+		font-size: xx-large;
 	}
 
 	img {
@@ -20,27 +19,4 @@
 
 img {
 	max-width: 100%;
-}
-
-.faded {
-	position: relative;
-	display: inline-block;
-	color: white;
-
-	&:after {
-		content: "";
-		position: absolute;
-		display: block;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		border-collapse: separate;
-	}
-}
-
-.faded.faded-all {
-	&:after {
-		box-shadow: inset 0 0 40px 16px;
-	}
 }

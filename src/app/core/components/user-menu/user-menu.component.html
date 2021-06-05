@@ -1,0 +1,43 @@
+<div *ngIf="userState$ | async as userState">
+  <ng-container *ngIf="userState.currentUser; then authenticated else guest"></ng-container>
+
+  <!-- User NOT logged in -->
+  <ng-template #guest>
+    <button mat-raised-button color="accent" [loading]="userState.isLoading" spinnerColor="accent" (click)="onLoginClick()" [matTooltip]="'userCard.login' | transloco">
+      <mat-icon>account_circle</mat-icon>
+      {{ 'userCard.login' | transloco | uppercase }}
+    </button>
+  </ng-template>
+
+  <!-- User logged in -->
+  <ng-template #authenticated>
+    <ng-container *ngIf="userState.currentUser as user">
+      <button mat-button [matMenuTriggerFor]="userMenu" class="profile-link">
+        <img class="profile-image" [src]="user.photoURL">
+      </button>
+
+      <mat-menu #userMenu="matMenu">
+        <div class="avatar">
+          <img class="profile-image" [src]="user.photoURL">
+          <span class="profile-text">{{ user.displayName }}</span>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <button mat-menu-item [routerLink]="['/users', user.uid]" [matTooltip]="'userCard.profile' | transloco">
+          <mat-icon>account_box</mat-icon>
+          <span>{{ 'userCard.profile' | transloco }}</span>
+        </button>
+
+        <button mat-menu-item (click)="onLogoutClick()" [matTooltip]="'userCard.logout' | transloco">
+          <mat-icon>logout</mat-icon>
+          <span>{{ 'userCard.logout' | transloco }}</span>
+        </button>
+
+        <mat-divider></mat-divider>
+
+        <app-language-selector></app-language-selector>
+      </mat-menu>
+    </ng-container>
+  </ng-template>
+</div>

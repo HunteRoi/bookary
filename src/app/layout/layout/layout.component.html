@@ -1,8 +1,25 @@
-<app-header></app-header>
+<app-header (onMenuClick)="toggleSidenav()"></app-header>
 
-<main class="main" role="main">
-	<router-outlet></router-outlet>
-</main>
+<mat-sidenav-container>
+	<mat-sidenav color="primary" #sidenav [mode]="mode" [opened]="isSidenavOpened" (click)="mode === 'side' || toggleSidenav()">
+		<mat-list #menu>
+			<mat-list-item *ngFor="let item of menuItems" [ngStyle]="{ 'display': !item.mustBeAuthenticated || (isAuthenticated$ | async) ? 'inherit' : 'none' }">
+				<button mat-button [routerLink]="item.path">
+					<mat-icon>{{ item.icon }}</mat-icon>
+					{{ item.title | transloco }}
+				</button>
+			</mat-list-item>
+		</mat-list>
 
-<span class="floating-version">{{ appVersion }}</span>
-<app-footer></app-footer>
+		<app-footer></app-footer>
+	</mat-sidenav>
+
+	<mat-sidenav-content>
+		<main class="main" role="main">
+			<router-outlet></router-outlet>
+		</main>
+
+		<span class="floating-version">{{ appVersion }}</span>
+	</mat-sidenav-content>
+
+</mat-sidenav-container>
