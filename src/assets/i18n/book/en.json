@@ -1,5 +1,11 @@
 {
 	"title": "Scan For Book Details",
 	"bookTitle": "Book Details",
-	"administration": "Add Book Details"
+	"administration": "Add Book Details",
+	"form": {
+		"search": {
+			"label": "Search...",
+			"hint": "Max characters"
+		}
+	}
 }

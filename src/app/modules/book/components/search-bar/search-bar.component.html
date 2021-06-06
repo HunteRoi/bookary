@@ -1,0 +1,8 @@
+<form class="form">
+  <mat-form-field class="formField-full-width" appearance="outline">
+    <mat-label>{{ 'book.form.search.label' | transloco }}</mat-label>
+    <mat-icon matPrefix>search</mat-icon>
+    <input matInput #input [attr.maxlength]="maxLength" type="text" (keyup)="onKey($event)">
+    <mat-hint *ngIf="maxLength" align="end">{{ 'book.form.search.hint' | transloco }} : {{ input.value?.length || 0}}/{{ maxLength }}</mat-hint>
+  </mat-form-field>
+</form>

@@ -1,5 +1,11 @@
 {
 	"title": "Scanner un Livre",
 	"bookTitle": "Détails",
-	"administration": "Ajouter un Livre"
+	"administration": "Ajouter un Livre",
+	"form": {
+		"search": {
+			"label": "Rechercher...",
+			"hint": "Nombre de caractères max"
+		}
+	}
 }
